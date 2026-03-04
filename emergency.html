@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emergency SOS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sos-container">
+
+    <h2>🚨 Emergency Help - Sarhad College</h2>
+
+    <div class="card">
+        <h3>Anti-Ragging Helpline</h3>
+        <a href="tel:18001805522" class="call-btn">Call 1800-180-5522</a>
+    </div>
+
+    <div class="card">
+        <h3>Women Harassment Helpline</h3>
+        <a href="tel:1091" class="call-btn">Call 1091</a>
+    </div>
+
+    <div class="card">
+        <h3>Police</h3>
+        <a href="tel:100" class="call-btn">Call 100</a>
+    </div>
+
+    <div class="card">
+        <h3>College Committee Members</h3>
+        <p>Prof. Patil - 9876543210</p>
+        <p>Prof. Sharma - 9123456780</p>
+    </div>
+
+    <br>
+  <button class="sos-btn" onclick="sendSOS()">🚨 SOS Emergency</button>
+
+<div id="sosResult" style="margin-top:15px; font-weight:bold;"></div>
+
+<script>
+function sendSOS() {
+
+    alert("🚨 Emergency Alert Sent!");
+
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+
+            var locationLink = "https://maps.google.com/?q=" + lat + "," + lon;
+
+            document.getElementById("sosResult").innerHTML =
+                "Location Captured! <br>" +
+                "📍 <a href='" + locationLink + "' target='_blank'>View on Google Maps</a><br><br>" +
+                "Emergency Numbers:<br>" +
+                "Anti-Ragging: 1800-180-5522<br>" +
+                "Women Helpline: 1091<br>" +
+                "Police: 100";
+
+        });
+
+    } else {
+        alert("Geolocation not supported.");
+    }
+}
+
+</script>
+</div>
+
+<script>
+function sendLocation() {
+
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+
+            document.getElementById("locationResult").innerHTML =
+                "Location Shared Successfully!<br>" +
+                "Latitude: " + lat + "<br>" +
+                "Longitude: " + lon;
+
+        });
+
+    } else {
+        alert("Geolocation not supported.");
+    }
+}
+</script>
+
+</body>
+</html>
