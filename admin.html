@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Login | Sarhad College</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Sarhad College</h1>
+    <h2>Admin Login</h2>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+    <a href="admin.html">Admin Login</a>
+</nav>
+
+<section class="form-section">
+    <h3>Login to Admin Panel</h3>
+
+    <form onsubmit="return loginAdmin()">
+        <label>Username:</label>
+        <input type="text" id="username" required>
+
+        <label>Password:</label>
+        <input type="password" id="password" required>
+
+        <button type="submit" class="submit-btn">Login</button>
+    </form>
+
+    <p id="loginResult" style="margin-top:15px; font-weight:bold;"></p>
+</section>
+
+<footer>
+    <p>© 2026 Sarhad College | Admin Panel</p>
+</footer>
+
+<script>
+function loginAdmin() {
+    var user = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
+    var result = document.getElementById("loginResult");
+
+    if(user === "admin" && pass === "1234") {
+        result.innerHTML = "Login Successful ✅";
+        result.style.color = "green";
+    } else {
+        result.innerHTML = "Invalid Username or Password ❌";
+        result.style.color = "red";
+    }
+
+    return false;
+}
+</script>
+
+</body>
+</html>
