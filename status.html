@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check Complaint Status</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Check Complaint Status</h2>
+
+<input type="text" id="searchID" placeholder="Enter Complaint ID"><br><br>
+
+<button class="status-btn" onclick="checkStatus()">Check Status</button>
+
+<p id="result"></p>
+
+<script>
+function checkStatus() {
+
+    var id = document.getElementById("searchID").value.trim();
+    var data = localStorage.getItem(id);
+
+    if (data) {
+        var complaint = JSON.parse(data);
+
+        document.getElementById("result").innerHTML =
+            "Name: " + complaint.name + "<br>" +
+            "Roll: " + complaint.roll + "<br>" +
+            "Department: " + complaint.department + "<br>" +
+            "Type: " + complaint.type + "<br>" +
+            "Status: Submitted";
+
+    } else {
+        document.getElementById("result").innerHTML =
+            "<span style='color:red;'>Complaint ID Not Found</span>";
+    }
+}
+</script>
+
+</body>
+</html>
